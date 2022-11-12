@@ -1,8 +1,8 @@
-package ru.job4j.url_shortcut.service;
+package ru.job4j.url.shortcut.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.url_shortcut.domain.Website;
-import ru.job4j.url_shortcut.repository.WebsiteRepository;
+import ru.job4j.url.shortcut.domain.Website;
+import ru.job4j.url.shortcut.repository.WebsiteRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +30,10 @@ public class WebsiteServices {
 
     public void delete(Website website) {
         websiteRepository.delete(website);
+    }
 
+    public Optional<Website> findBySite(String site) {
+        return websiteRepository.findBySite(site);
     }
 
 }
