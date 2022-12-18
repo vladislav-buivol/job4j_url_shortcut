@@ -4,6 +4,7 @@ import ru.job4j.url.shortcut.marker.Operation;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
@@ -18,16 +19,17 @@ public class Website {
     private int id;
 
     @Column(unique = true)
+    @NotBlank(message = "Site cannot be empty")
     private String site;
 
     @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
     @NotNull(message = "User must be not null")
-    private WebsiteUser user;
+    private Account user;
 
     public Website() {
     }
 
-    public Website(String site, WebsiteUser user) {
+    public Website(String site, Account user) {
         this.site = site;
         this.user = user;
     }
@@ -50,11 +52,11 @@ public class Website {
         return this;
     }
 
-    public WebsiteUser getUser() {
+    public Account getUser() {
         return user;
     }
 
-    public Website setUser(WebsiteUser user) {
+    public Website setUser(Account user) {
         this.user = user;
         return this;
     }

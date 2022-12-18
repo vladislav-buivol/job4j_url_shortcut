@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -44,9 +43,8 @@ public class GlobalExceptionHandler {
         ));
     }
 
-    @ExceptionHandler(value = {MethodArgumentNotValidException.class,
-            ConstraintViolationException.class})
-    public ResponseEntity<?> handle(Errors e) {
+    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
+    public ResponseEntity<?> handle(MethodArgumentNotValidException e) {
         return ResponseEntity.badRequest().body(
                 e.getFieldErrors().stream()
                         .map(f -> Map.of(
@@ -60,4 +58,22 @@ public class GlobalExceptionHandler {
         );
     }
 
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    public ResponseEntity<?> handle(IllegalArgumentException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(value = {ConstraintViolationException.class})
+    public ResponseEntity<?> handle(ConstraintViolationException e) {
+        return ResponseEntity.badRequest().body(
+                e.getConstraintViolations().stream().map(
+                        v -> Map.of(
+                                v.getPropertyPath(),
+                                String.format("Invalid value for %s. Error: %s. Actual value: '%s'",
+                                        v.getPropertyPath(),
+                                        v.getMessage(),
+                                        v.getInvalidValue())
+                        )
+                ).collect(Collectors.toList()));
+    }
 }

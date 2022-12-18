@@ -6,14 +6,15 @@ import java.util.function.Function;
 
 public class RandomStringGenerator {
 
-    public static String generateRandomString(Function<String, Boolean> stopCondition, int length) {
+    public static String generateRandomString(Function<String, Boolean> stopCondition,
+                                              int minLength) {
         int nrOfTries = 0;
-        String str = RandomStringUtils.randomAlphanumeric(length);
+        String str = RandomStringUtils.randomAlphanumeric(minLength);
         while (stopCondition.apply(str)) {
             if (nrOfTries % 10 == 0) {
-                length++;
+                minLength++;
             }
-            str = RandomStringUtils.randomAlphanumeric(length);
+            str = RandomStringUtils.randomAlphanumeric(minLength);
             nrOfTries++;
         }
         return str;

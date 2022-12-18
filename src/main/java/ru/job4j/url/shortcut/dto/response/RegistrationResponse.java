@@ -1,6 +1,6 @@
 package ru.job4j.url.shortcut.dto.response;
 
-import ru.job4j.url.shortcut.domain.WebsiteUser;
+import ru.job4j.url.shortcut.domain.Account;
 
 public class RegistrationResponse implements Response {
     private boolean registration = false;
@@ -16,13 +16,13 @@ public class RegistrationResponse implements Response {
         this.password = password;
     }
 
-    public RegistrationResponse(boolean registration, WebsiteUser user) {
+    public RegistrationResponse(boolean registration, Account user) {
         this.registration = registration;
         this.login = user.getLogin();
         this.password = user.getPassword();
     }
 
-    public RegistrationResponse(WebsiteUser user) {
+    public RegistrationResponse(Account user) {
         this.login = user.getLogin();
         this.password = user.getPassword();
     }

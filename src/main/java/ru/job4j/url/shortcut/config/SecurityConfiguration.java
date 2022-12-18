@@ -13,7 +13,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.job4j.url.shortcut.filter.JWTAuthenticationFilter;
 import ru.job4j.url.shortcut.filter.JWTAuthorizationFilter;
-import ru.job4j.url.shortcut.service.UserDetailsServiceImpl;
+import ru.job4j.url.shortcut.service.account.UserDetailsServiceImpl;
 
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -50,5 +50,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
         return source;
     }
-
 }

@@ -1,4 +1,4 @@
-package ru.job4j.url.shortcut.service;
+package ru.job4j.url.shortcut.service.website;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.url.shortcut.domain.Website;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class WebsiteServices {
+public class WebsiteServices implements WebServices {
     private final WebsiteRepository websiteRepository;
 
     public WebsiteServices(WebsiteRepository websiteRepository) {

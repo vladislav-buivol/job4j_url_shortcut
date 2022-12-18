@@ -11,7 +11,8 @@ public class RegistrationRequest implements Request {
         return site;
     }
 
-    public void setSite(String site) {
+    public RegistrationRequest setSite(String site) {
         this.site = site;
+        return this;
     }
 }

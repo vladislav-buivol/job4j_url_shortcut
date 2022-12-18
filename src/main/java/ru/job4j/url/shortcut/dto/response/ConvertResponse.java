@@ -6,4 +6,15 @@ public class ConvertResponse implements Response {
     public ConvertResponse(String code) {
         this.code = code;
     }
+
+    public ConvertResponse() {
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

@@ -29,3 +29,4 @@ services:
 
 before_script:
   - psql -c 'create database job4j_url_shortcut;' -U postgres
+  - psql -c 'create database job4j_url_shortcut_test;' -U postgres
