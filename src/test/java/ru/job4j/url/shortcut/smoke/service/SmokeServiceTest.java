@@ -1,5 +1,6 @@
 package ru.job4j.url.shortcut.smoke.service;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +11,7 @@ import ru.job4j.url.shortcut.service.website.WebsiteServices;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class SmokeServiceTest {

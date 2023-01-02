@@ -1,0 +1,213 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Api Documentation",
+    "description": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Inferred Url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "link-controller",
+      "description": "Link Controller"
+    },
+    {
+      "name": "website-controller",
+      "description": "Website Controller"
+    }
+  ],
+  "paths": {
+    "/link/convert": {
+      "post": {
+        "tags": [
+          "link-controller"
+        ],
+        "summary": "Convert url to shortcut",
+        "operationId": "convertUsingPOST",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConvertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/link/redirect/{shortcut}": {
+      "get": {
+        "tags": [
+          "link-controller"
+        ],
+        "summary": "Returns redirect response (302) with redirected URL in the header",
+        "operationId": "redirectUsingGET",
+        "parameters": [
+          {
+            "name": "shortcut",
+            "in": "path",
+            "description": "shortcut",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/link/statistic": {
+      "get": {
+        "tags": [
+          "link-controller"
+        ],
+        "summary": "Returns statistics the number of calls for all URL's",
+        "operationId": "statisticUsingGET",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/website/registration": {
+      "post": {
+        "tags": [
+          "website-controller"
+        ],
+        "summary": "Site registration. Returns a response that contains the login token in the 'Authorization' header",
+        "operationId": "registrationUsingPOST",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Response"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConvertRequest": {
+        "title": "ConvertRequest",
+        "required": [
+          "url"
+        ],
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        }
+      },
+      "RegistrationRequest": {
+        "title": "RegistrationRequest",
+        "required": [
+          "site"
+        ],
+        "type": "object",
+        "properties": {
+          "site": {
+            "type": "string"
+          }
+        }
+      },
+      "Response": {
+        "title": "Response",
+        "type": "object"
+      }
+    }
+  }
+}

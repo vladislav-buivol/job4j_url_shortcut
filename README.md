@@ -18,9 +18,13 @@ The service allows, after registration, to convert URLs into code and use it to 
 
 #### Api Documentation
 
-Api Documentation available at: 
-````http://<app-root>/swagger-ui````
-E.g: http://localhost:8080/swagger-ui/
+Api documentation: https://vladislav-buivol.github.io/job4j_url_shortcut/api 
+or when project is running
+````http://<app-root>/swagger-ui E.g:http://localhost:8080/swagger-ui/````
+
+
+To update api send get request to 
+````http://<app-root>/v3/api-docs```` and replace the values in the ````docs/api/api.json```` file  
 
 #### Running The Project
 
@@ -28,7 +32,6 @@ E.g: http://localhost:8080/swagger-ui/
 
 ````
 CREATE DATABASE job4j_url_shortcut
-CREATE DATABASE job4j_url_shortcut_test
 ````
 
 2. Run project
@@ -36,3 +39,5 @@ CREATE DATABASE job4j_url_shortcut_test
 ````
 mvn spring-boot:run
 ````
+
+Contacts: vladislav96.b@gmail.com
