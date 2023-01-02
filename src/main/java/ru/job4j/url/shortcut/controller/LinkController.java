@@ -1,5 +1,7 @@
 package ru.job4j.url.shortcut.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import ru.job4j.url.shortcut.dto.response.Response;
 import ru.job4j.url.shortcut.dto.response.StatisticResponse;
 import ru.job4j.url.shortcut.service.link.LinkServices;
 
+@Api
 @RestController
 @RequestMapping("/link")
 public class LinkController {
@@ -20,6 +23,7 @@ public class LinkController {
         this.linkServices = linkServices;
     }
 
+    @ApiOperation("Convert url to shortcut")
     @PostMapping("/convert")
     public ResponseEntity<Response> convert(@RequestBody ConvertRequest request) {
         try {
@@ -31,6 +35,7 @@ public class LinkController {
         }
     }
 
+    @ApiOperation("Returns redirect response (302) with redirected URL in the header")
     @GetMapping("/redirect/{shortcut}")
     public ResponseEntity<Void> redirect(@PathVariable String shortcut) {
         try {
@@ -44,6 +49,7 @@ public class LinkController {
         }
     }
 
+    @ApiOperation("Returns statistics the number of calls for all URL's")
     @GetMapping("/statistic")
     public ResponseEntity<Response> statistic() {
         try {

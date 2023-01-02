@@ -16,12 +16,19 @@ The service allows, after registration, to convert URLs into code and use it to 
 <li> Maven </li>
 </ol>
 
+#### Api Documentation
+
+Api Documentation available at: 
+````http://<app-root>/swagger-ui````
+E.g: http://localhost:8080/swagger-ui/
+
 #### Running The Project
 
 1. Create database
 
 ````
-CREATE DATABASE url_shortcut
+CREATE DATABASE job4j_url_shortcut
+CREATE DATABASE job4j_url_shortcut_test
 ````
 
 2. Run project

@@ -1,5 +1,7 @@
 package ru.job4j.url.shortcut.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,6 +21,7 @@ import ru.job4j.url.shortcut.service.website.WebsiteServices;
 
 import java.util.Optional;
 
+@Api
 @RestController
 @RequestMapping("/website")
 public class WebsiteController {
@@ -34,6 +37,8 @@ public class WebsiteController {
         this.encoder = encoder;
     }
 
+    @ApiOperation("Site registration. "
+            + "Returns a response that contains the login token in the 'Authorization' header")
     @PostMapping("/registration")
     public ResponseEntity<Response> registration(
             @Validated(Operation.OnCreate.class) @RequestBody RegistrationRequest request) {
