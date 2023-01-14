@@ -51,8 +51,7 @@ public class WebsiteController {
         ResponseEntity<Response> response =
                 new ResponseEntity<>(new RegistrationResponse(true, user),
                         HttpStatus.OK);
-
-        user.encodePwd(encoder);
+        user.setPassword(encoder.encode(user.getPassword()));
         Website website = new Website(request.getSite(), user);
         websiteServices.save(website);
         return response;

@@ -3,11 +3,13 @@ package ru.job4j.url.shortcut.repository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import ru.job4j.url.shortcut.domain.LinkShortcut;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
 public interface LinkShortcutRepository extends CrudRepository<LinkShortcut, Integer> {
     List<LinkShortcut> findAll();
 

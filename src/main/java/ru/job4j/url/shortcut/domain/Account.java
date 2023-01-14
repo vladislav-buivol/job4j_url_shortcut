@@ -1,6 +1,5 @@
 package ru.job4j.url.shortcut.domain;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.job4j.url.shortcut.marker.Operation;
 
 import javax.persistence.*;
@@ -9,6 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@Table(name = "account")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,10 +50,6 @@ public class Account {
     public Account setPassword(String password) {
         this.password = password;
         return this;
-    }
-
-    public void encodePwd(PasswordEncoder encoder) {
-        this.password = encoder.encode(password);
     }
 
     @Override

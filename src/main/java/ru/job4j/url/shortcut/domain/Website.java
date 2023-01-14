@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@Table(name = "website")
 public class Website {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
